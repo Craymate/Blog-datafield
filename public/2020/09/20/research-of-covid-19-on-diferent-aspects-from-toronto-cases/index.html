@@ -6,8 +6,8 @@
 <meta name="generator" content="Hugo 0.75.1" />
 
 
-<title>Research of COVID-19 on diferent aspects from Toronto Cases - A Hugo website</title>
-<meta property="og:title" content="Research of COVID-19 on diferent aspects from Toronto Cases - A Hugo website">
+<title>Research of COVID-19 on Diferent Aspects from Toronto Cases - A Hugo website</title>
+<meta property="og:title" content="Research of COVID-19 on Diferent Aspects from Toronto Cases - A Hugo website">
 
 
   <link href='/favicon1.ico' rel='icon' type='image/x-icon'/>
@@ -60,10 +60,10 @@
 
   <article class="article">
     
-    <span class="article-duration">10 min read</span>
+    <span class="article-duration">8 min read</span>
     
 
-    <h1 class="article-title">Research of COVID-19 on diferent aspects from Toronto Cases</h1>
+    <h1 class="article-title">Research of COVID-19 on Diferent Aspects from Toronto Cases</h1>
 
     
     <span class="article-date">2020-09-20</span>
@@ -146,26 +146,7 @@ ggplot(cases, aes(x=month, y=count, fill = Class)) + geom_bar(stat=&quot;identit
 <p>Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now.</p>
 <pre class="r"><code>#For the fatal cases
 fata &lt;- filter(covdat, covdat$Outcome == &quot;FATAL&quot;)
-fata</code></pre>
-<pre><code>## # A tibble: 1,154 x 19
-##     `_id` Assigned_ID `Outbreak Assoc~ `Age Group` `Neighbourhood ~ FSA  
-##     &lt;int&gt;       &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;
-##  1 126784          80 Sporadic         70 to 79 Y~ Victoria Village M4A  
-##  2 136398        9741 Outbreak Associ~ 80 to 89 Y~ Birchcliffe-Cli~ M1N  
-##  3 136407        9750 Sporadic         70 to 79 Y~ Stonegate-Queen~ M8Z  
-##  4 136539        9883 Outbreak Associ~ 90 and old~ Yorkdale-Glen P~ M6B  
-##  5 136540        9884 Outbreak Associ~ 90 and old~ Yorkdale-Glen P~ M6B  
-##  6 136541        9885 Outbreak Associ~ 80 to 89 Y~ West Humber-Cla~ M9V  
-##  7 139228       12623 Outbreak Associ~ 80 to 89 Y~ Guildwood        M1E  
-##  8 139326       12723 Sporadic         50 to 59 Y~ North St. James~ M4X  
-##  9 139327       12724 Outbreak Associ~ 60 to 69 Y~ Birchcliffe-Cli~ M1N  
-## 10 139901       13306 Sporadic         80 to 89 Y~ Flemingdon Park  M3C  
-## # ... with 1,144 more rows, and 13 more variables: `Source of Infection` &lt;chr&gt;,
-## #   Classification &lt;chr&gt;, `Episode Date` &lt;chr&gt;, `Reported Date` &lt;chr&gt;, `Client
-## #   Gender` &lt;chr&gt;, Outcome &lt;chr&gt;, `Currently Hospitalized` &lt;chr&gt;, `Currently in
-## #   ICU` &lt;chr&gt;, `Currently Intubated` &lt;chr&gt;, `Ever Hospitalized` &lt;chr&gt;, `Ever
-## #   in ICU` &lt;chr&gt;, `Ever Intubated` &lt;chr&gt;, month &lt;chr&gt;</code></pre>
-<pre class="r"><code>ggplot(fata, aes(x = `Age Group`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Age Groups&quot;, y = &quot;Number of Cases&quot;, title = &quot;Age Group Distribution in Fatal Cases&quot;) + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))</code></pre>
+ggplot(fata, aes(x = `Age Group`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Age Groups&quot;, y = &quot;Number of Cases&quot;, title = &quot;Age Group Distribution in Fatal Cases&quot;) + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-1.png" width="672" /></p>
 <pre class="r"><code>ggplot(fata, aes(x = `Client Gender`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Genders&quot;, y = &quot;Number of Cases&quot;, title = &quot;Gender Group Distribution in Fatal Cases&quot;)</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-2.png" width="672" /></p>
@@ -185,27 +166,7 @@ percent</code></pre>
 <p>Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated, which is not a good ratio.</p>
 <pre class="r"><code>#For the resolved cases
 resol &lt;- filter(covdat, Outcome == &quot;RESOLVED&quot;)
-resol</code></pre>
-<pre><code>## # A tibble: 13,797 x 19
-##     `_id` Assigned_ID `Outbreak Assoc~ `Age Group` `Neighbourhood ~ FSA  
-##     &lt;int&gt;       &lt;int&gt; &lt;chr&gt;            &lt;chr&gt;       &lt;chr&gt;            &lt;chr&gt;
-##  1 126705           1 Sporadic         50 to 59 Y~ Willowdale East  M2N  
-##  2 126706           2 Sporadic         50 to 59 Y~ Willowdale East  M2N  
-##  3 126707           3 Sporadic         20 to 29 Y~ Parkwoods-Donal~ M3A  
-##  4 126708           4 Sporadic         60 to 69 Y~ Church-Yonge Co~ M4W  
-##  5 126709           5 Sporadic         60 to 69 Y~ Church-Yonge Co~ M4W  
-##  6 126710           6 Sporadic         50 to 59 Y~ Newtonbrook West M2R  
-##  7 126711           7 Sporadic         80 to 89 Y~ Milliken         M1V  
-##  8 126712           8 Sporadic         60 to 69 Y~ Willowdale West  M2N  
-##  9 126713           9 Sporadic         50 to 59 Y~ Willowdale East  M2N  
-## 10 126714          10 Sporadic         60 to 69 Y~ Henry Farm       M2J  
-## # ... with 13,787 more rows, and 13 more variables: `Source of
-## #   Infection` &lt;chr&gt;, Classification &lt;chr&gt;, `Episode Date` &lt;chr&gt;, `Reported
-## #   Date` &lt;chr&gt;, `Client Gender` &lt;chr&gt;, Outcome &lt;chr&gt;, `Currently
-## #   Hospitalized` &lt;chr&gt;, `Currently in ICU` &lt;chr&gt;, `Currently Intubated` &lt;chr&gt;,
-## #   `Ever Hospitalized` &lt;chr&gt;, `Ever in ICU` &lt;chr&gt;, `Ever Intubated` &lt;chr&gt;,
-## #   month &lt;chr&gt;</code></pre>
-<pre class="r"><code>ggplot(resol, aes(x = `Age Group`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Age Groups&quot;, y = &quot;Number of Cases&quot;, title = &quot;Age Group Distribution in Resolved Cases&quot;) + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))</code></pre>
+ggplot(resol, aes(x = `Age Group`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Age Groups&quot;, y = &quot;Number of Cases&quot;, title = &quot;Age Group Distribution in Resolved Cases&quot;) + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/covdat-resol-1.png" width="672" /></p>
 <pre class="r"><code>summ &lt;- summarise(resol, Total = count(resol),
           Ever_Hospitalized = count(filter(resol, `Ever Hospitalized` == &quot;Yes&quot;)), 

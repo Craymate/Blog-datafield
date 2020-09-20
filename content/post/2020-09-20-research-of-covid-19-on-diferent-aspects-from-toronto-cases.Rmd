@@ -1,5 +1,5 @@
 ---
-title: "Research of COVID-19 on diferent aspects from Toronto Cases"
+title: "COVID-19 on Diferent Aspects from Toronto Cases"
 author: "Zhendong Zhang"
 date: 2020-09-20
 abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases."
