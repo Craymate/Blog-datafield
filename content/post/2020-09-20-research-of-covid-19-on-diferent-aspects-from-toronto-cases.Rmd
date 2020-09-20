@@ -91,7 +91,6 @@ Since April 1st, there was an emergency response from Ontario Government. But th
 
 #For the fatal cases
 fata <- filter(covdat, covdat$Outcome == "FATAL")
-fata
 ggplot(fata, aes(x = `Age Group`)) + geom_bar(stat="count") + labs(x = "Age Groups", y = "Number of Cases", title = "Age Group Distribution in Fatal Cases") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))
 
 ggplot(fata, aes(x = `Client Gender`)) + geom_bar(stat="count") + labs(x = "Genders", y = "Number of Cases", title = "Gender Group Distribution in Fatal Cases")
@@ -118,7 +117,6 @@ Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal 
 
 #For the resolved cases
 resol <- filter(covdat, Outcome == "RESOLVED")
-resol
 ggplot(resol, aes(x = `Age Group`)) + geom_bar(stat="count") + labs(x = "Age Groups", y = "Number of Cases", title = "Age Group Distribution in Resolved Cases") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))
 
 summ <- summarise(resol, Total = count(resol),
