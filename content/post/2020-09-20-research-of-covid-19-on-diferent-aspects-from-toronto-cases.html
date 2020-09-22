@@ -77,7 +77,6 @@ total_case &lt;- summarise(group_by(covdat, month), Class = &quot;Total&quot;, c
 cases &lt;- rbind(contact_case, total_case)
 ggplot(cases, aes(x=month, y=count, fill = Class)) + geom_bar(stat=&quot;identity&quot;, position=&quot;dodge&quot;) + labs(x = &quot;Months&quot;, y = &quot;Number of Cases&quot;, title = &quot;Total Cases vs. Confirmed Closed Contact Cases&quot;)</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/covdat-contact-1.png" width="672" /></p>
-<p>This means social distancing is surely a right strategy on this outbreak.</p>
 <p>Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now.</p>
 <pre class="r"><code>#For the fatal cases
 fata &lt;- filter(covdat, covdat$Outcome == &quot;FATAL&quot;)
@@ -98,7 +97,7 @@ percent</code></pre>
 ## 1 71.14385</code></pre>
 <p>Most of cases are elder people. This is reasonable because they generally have weaker health conditions. As the age increases, the fatal cases also increase.</p>
 <p>Gender seems have no influence on the fatal outcomes</p>
-<p>Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated, which is not a good ratio.</p>
+<p>Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated.</p>
 <pre class="r"><code>#For the resolved cases
 resol &lt;- filter(covdat, Outcome == &quot;RESOLVED&quot;)
 ggplot(resol, aes(x = `Age Group`)) + geom_bar(stat=&quot;count&quot;) + labs(x = &quot;Age Groups&quot;, y = &quot;Number of Cases&quot;, title = &quot;Age Group Distribution in Resolved Cases&quot;) + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5))</code></pre>

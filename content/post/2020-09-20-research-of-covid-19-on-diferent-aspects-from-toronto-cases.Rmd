@@ -82,8 +82,6 @@ ggplot(cases, aes(x=month, y=count, fill = Class)) + geom_bar(stat="identity", p
 
 ```
 
-This means social distancing is surely a right strategy on this outbreak.
-
 Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now.
 
 
@@ -111,7 +109,7 @@ Most of cases are elder people. This is reasonable because they generally have w
 
 Gender seems have no influence on the fatal outcomes
 
-Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated, which is not a good ratio.
+Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated.
 
 ```{r covdat-resol}
 
