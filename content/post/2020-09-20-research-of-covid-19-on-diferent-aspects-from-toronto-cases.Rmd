@@ -55,25 +55,38 @@ ggplot(covdat, aes(x = month)) + geom_histogram(stat="count") + labs(x = "Months
 
 ```
 
-The peak is in April, and started to decrease in May. There was a boost from March to April. But now it has been back to the level in March.
+The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing aagin.
 
 ```{r infect-age, warning=FALSE, echo=FALSE, results="hide", fig.align='center'}
 
- ggplot(covdat, aes(x = `Age Group`)) + geom_bar(stat="count") + labs(x = "Age Groups", y = "Number of Confirmed Cases", title = "Cases Distribution Across Age Groups") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5), plot.title = element_text(hjust = 0.5))
-
+ggplot(covdat, aes(x = `Age Group`)) + geom_bar(stat="count") + labs(x = "Age Groups", y = "Number of Confirmed Cases", title = "Cases Distribution Across Age Groups") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5), plot.title = element_text(hjust = 0.5))
 
 ```
 
-The infection between age groups is evenly distributed.
+The infection between age groups is nearly normal distributed. This means every age group may have similar possibility to get infected.
+
+```{r infect-gender, echo=FALSE, results="hide", fig.align='center'}
+
+total_gender <- count(group_by(covdat, `Client Gender`))
+total_gender <- mutate(total_gender, Class = "Total")
+
+ggplot(covdat, aes(x = `Client Gender`)) + geom_bar(stat="count") + labs(x = "Genders", y = "Number of Cases", title = "Gender Group Distribution in Overall Cases") + theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+Different gender groups have slightly differences in infected amount.
 
 ```{r source-plots, echo=FALSE, results="hide", fig.align='center'}
+
  ggplot(covdat, aes(x = `Source of Infection`)) + geom_bar(stat="count") + labs(title = "Infection Sources Distribution") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5), plot.title = element_text(hjust = 0.5))
 #The highest source is NA.
+
 ```
 
 There are many cases that they are NA-Outbreak Associated, which means that we don`t know the source of infection on these cases.
 
 ```{r filtered, echo=FALSE, results="hide", fig.align='center'}
+
 sources <- filter(covdat, `Source of Infection` != "N/A - Outbreak associated")
 
 ggplot(sources, aes(x = `Source of Infection`)) + geom_bar(stat="count") + labs(title = "Filtered Infection Sources Distribution") + theme(plot.title = element_text(hjust = 0.5))
@@ -96,7 +109,7 @@ ggplot(cases, aes(x=month, y=count, fill = Class)) + geom_bar(stat="identity", p
 
 ```
 
-Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now.
+Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now. In September , it shows a sign of increasing with the number of close contact cases is also increased.
 
 ```{r correlation}
 full_contact <- c(0,0,contact_case$count)
@@ -122,11 +135,38 @@ Most of cases are elder people. This is reasonable because they generally have w
 
 ```{r fata-gender, echo=FALSE, results="hide", fig.align='center'}
 
-ggplot(fata, aes(x = `Client Gender`)) + geom_bar(stat="count") + labs(x = "Genders", y = "Number of Cases", title = "Gender Group Distribution in Fatal Cases") + theme(plot.title = element_text(hjust = 0.5))
+fata_gender <- count(group_by(fata, `Client Gender`))
+fata_gender <- mutate(fata_gender, Class = "Fatal")
+
+gender_fata_total <- rbind(total_gender, fata_gender)
+
+ggplot(gender_fata_total, aes(x=`Client Gender`, y=n, fill = Class)) + geom_bar(stat="identity", position="dodge") + labs(x = "Months", y = "Number of Cases", title = "Total Cases vs. Fatal Cases on Different Gender") + theme(plot.title = element_text(hjust = 0.5))
 
 ```
 
-Gender seems have no influence on the fatal outcomes
+Different gender groups have slightly differences on the fatal outcomes
+
+```{r fata-gender-percent, echo=FALSE, results="hide", fig.align='center'}
+
+total_filtered_gender <- filter(total_gender, `Client Gender` != "TRANSGENDER", `Client Gender` != "OTHER")
+gender_fata_ratio <- data.frame(Gender = fata_gender$`Client Gender`, Ratio = fata_gender$n / total_filtered_gender$n)
+
+ggplot(gender_fata_ratio, aes(x=Gender, y=Ratio)) + geom_bar(stat="identity") + labs(x = "Gender", y = "Fatal Rate", title = "Fatal Rate Among Different Genders") + theme(plot.title = element_text(hjust = 0.5))
+
+```
+(The rates are calculated by the ratio between fatal and total cases from each groups.)\
+Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.
+
+```{r fata-ratio}
+
+gender_fata_ratio
+fata_mean <- mean(gender_fata_ratio$Ratio)
+fata_mean
+
+```
+
+There is an approximately 9.6% <span style="color:red">Fatal Rate</span>.
+
 
 ```{r fata-hosip, echo=FALSE, results="hide", fig.align='center'}
 
@@ -137,12 +177,18 @@ summ1 <- summarise(fata, Total = count(fata),
 
 barplot(unlist(summ1), names.arg=c("Total", "Ever Hospitalized", "Ever in ICU", "Ever Intubated"), main = "Fatal Cases` History of Inpatient Visits")
 
+```
+
+Nearly half of fatal cases have ever hospitalized.
+
+```{r percent}
+
 percent <- (summ1$Ever_Hospitalized + summ1$Ever_in_ICU + summ1$Ever_Intubated) * 100/summ1$Total
 percent
 
 ```
 
-Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated.
+And about 71% of total fatal cases got treated. This indicates that the shortage of hospital resources to general extent.
 
 
 # <span style="color:blue">For Resolved Cases:</span>
@@ -156,6 +202,41 @@ ggplot(resol, aes(x = `Age Group`)) + geom_bar(stat="count") + labs(x = "Age Gro
 ```
 
 Younger people seems more likely to recover from this.
+
+```{r resol-gender, echo=FALSE, results="hide", fig.align='center'}
+
+resol_gender <- count(group_by(resol, `Client Gender`))
+resol_gender <- mutate(resol_gender, Class = "Resolved")
+
+gender_res_total <- rbind(total_gender, resol_gender)
+
+ggplot(gender_res_total, aes(x=`Client Gender`, y=n, fill = Class)) + geom_bar(stat="identity", position="dodge") + labs(x = "Months", y = "Number of Cases", title = "Total Cases vs. Resolved Cases on Different Gender") + theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+Different gender groups also have slightly differences on the resolved outcomes
+
+```{r resol-gender-percent, echo=FALSE, results="hide", fig.align='center'}
+
+gender_resol_ratio <- data.frame(Gender = resol_gender$`Client Gender`, Ratio = resol_gender$n / total_gender$n)
+
+ggplot(gender_resol_ratio, aes(x=Gender, y=Ratio)) + geom_bar(stat="identity") + labs(x = "Gender", y = "Resolve Rate", title = "Resolved Rate Among Different Genders") + theme(plot.title = element_text(hjust = 0.5))
+
+```
+
+(The rates are calculated by the ratio between resolved and total cases from each groups.)\
+Gender nearly makes no influence among different gender groups.
+
+
+```{r resol-ratio}
+
+gender_resol_ratio
+resol_mean <- mean(gender_resol_ratio$Ratio)
+resol_mean
+
+```
+
+There is an approximately 90.5% <span style="color:blue">Resolved Rate</span>.
 
 ```{r resol-hosip, echo=FALSE, results="hide", fig.align='center'}
 

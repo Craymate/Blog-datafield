@@ -51,16 +51,18 @@ public health.</p>
 <div id="for-overall-cases" class="section level1">
 <h1><span style="color:purple">For Overall Cases:</span></h1>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-month-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The peak is in April, and started to decrease in May. There was a boost from March to April. But now it has been back to the level in March.</p>
+<p>The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing aagin.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-age-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The infection between age groups is evenly distributed.</p>
+<p>The infection between age groups is nearly normal distributed. This means every age group may have similar possibility to get infected.</p>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-gender-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Different gender groups have slightly differences in infected amount.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/source-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>There are many cases that they are NA-Outbreak Associated, which means that we don`t know the source of infection on these cases.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/filtered-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The highest source of infection is close contact, which is significant higher than others.
 And the second highest is the community.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/covdat-contact-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now.</p>
+<p>Since April 1st, there was an emergency response from Ontario Government. But the close contact confirmed cases increases to the peak in May. Then this policy starts to take effect in June, and making significant effect in the following three months until now. In September , it shows a sign of increasing with the number of close contact cases is also increased.</p>
 <pre class="r"><code>full_contact &lt;- c(0,0,contact_case$count)
 cor.test(full_contact, total_case$count)</code></pre>
 <pre><code>## 
@@ -83,14 +85,47 @@ This means social distancing is expected to be a right strategy on this outbreak
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-age-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Most of cases are elder people. This is reasonable because they generally have weaker health conditions. As the age increases, the fatal cases also increase.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-gender-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Gender seems have no influence on the fatal outcomes</p>
+<p>Different gender groups have slightly differences on the fatal outcomes</p>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-gender-percent-1.png" width="672" style="display: block; margin: auto;" />
+(The rates are calculated by the ratio between fatal and total cases from each groups.)<br />
+Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.</p>
+<pre class="r"><code>gender_fata_ratio</code></pre>
+<pre><code>##    Gender      Ratio
+## 1  FEMALE 0.06926357
+## 2    MALE 0.06868313
+## 3 UNKNOWN 0.14977974</code></pre>
+<pre class="r"><code>fata_mean &lt;- mean(gender_fata_ratio$Ratio)
+fata_mean</code></pre>
+<pre><code>## [1] 0.09590881</code></pre>
+<p>There is an approximately 9.6% <span style="color:red">Fatal Rate</span>.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-hosip-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Nearly half of fatal cases have ever hospitalized. And about 71% of total fatal cases got treated.</p>
+<p>Nearly half of fatal cases have ever hospitalized.</p>
+<pre class="r"><code>percent &lt;- (summ1$Ever_Hospitalized + summ1$Ever_in_ICU + summ1$Ever_Intubated) * 100/summ1$Total
+percent</code></pre>
+<pre><code>##          n
+## 1 71.34199</code></pre>
+<p>And about 71% of total fatal cases got treated. This indicates that the shortage of hospital resources to general extent.</p>
 </div>
 <div id="for-resolved-cases" class="section level1">
 <h1><span style="color:blue">For Resolved Cases:</span></h1>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-age-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Younger people seems more likely to recover from this.</p>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-gender-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Different gender groups also have slightly differences on the resolved outcomes</p>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-gender-percent-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>(The rates are calculated by the ratio between resolved and total cases from each groups.)<br />
+Gender nearly makes no influence among different gender groups.</p>
+<pre class="r"><code>gender_resol_ratio</code></pre>
+<pre><code>##        Gender     Ratio
+## 1      FEMALE 0.8649303
+## 2        MALE 0.8544446
+## 3       OTHER 1.0000000
+## 4 TRANSGENDER 1.0000000
+## 5     UNKNOWN 0.8061674</code></pre>
+<pre class="r"><code>resol_mean &lt;- mean(gender_resol_ratio$Ratio)
+resol_mean</code></pre>
+<pre><code>## [1] 0.9051085</code></pre>
+<p>There is an approximately 90.5% <span style="color:blue">Resolved Rate</span>.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-hosip-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>We can see that in most resolved cases, people can recover without even being hospitalized.
 So immune system is making a great effect in this outbreak.</p>
