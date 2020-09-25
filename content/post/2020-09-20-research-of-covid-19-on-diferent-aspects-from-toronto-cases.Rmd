@@ -4,6 +4,7 @@ author: "Zhendong Zhang"
 date: 2020-09-20
 abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases."
 output: html_document
+runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -22,7 +23,7 @@ resou <- list_package_resources("https://open.toronto.ca/dataset/covid-19-cases-
 covdat <- get_resource(resou)
 str(covdat)
 variable.names(covdat)
-
+covdat
 ```
 
 The dataset(covdat) is total reported cases of COVID-19 in Toronto
@@ -55,7 +56,7 @@ ggplot(covdat, aes(x = month)) + geom_histogram(stat="count") + labs(x = "Months
 
 ```
 
-The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing aagin.
+The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing again.
 
 ```{r infect-age, warning=FALSE, echo=FALSE, results="hide", fig.align='center'}
 
@@ -78,7 +79,7 @@ Different gender groups have slightly differences in infected amount.
 
 ```{r source-plots, echo=FALSE, results="hide", fig.align='center'}
 
- ggplot(covdat, aes(x = `Source of Infection`)) + geom_bar(stat="count") + labs(title = "Infection Sources Distribution") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5), plot.title = element_text(hjust = 0.5))
+ggplot(covdat, aes(x = `Source of Infection`)) + geom_bar(stat="count") + labs(title = "Infection Sources Distribution") + theme(axis.text.x = element_text(angle = 45, hjust = 0.5, vjust = 0.5), plot.title = element_text(hjust = 0.5))
 #The highest source is NA.
 
 ```
@@ -119,6 +120,15 @@ cor.test(full_contact, total_case$count)
 Low P-value from result of cor.test() means total cases is related to close contact cases.
 The sample estimates means that the total cases are estimated 88.1% related by closed contact cases.
 This means social distancing is expected to be a right strategy on this outbreak.
+
+```{r total-outcome}
+
+outcome <- count(group_by(covdat, Outcome))
+pie(outcome$n, labels=outcome$Outcome, main = "Outcome Distribution")
+
+```
+
+The majority outcomes are resolved.
 
 
 # <span style="color:red">For Fatal Cases:</span>
@@ -251,6 +261,123 @@ barplot(unlist(summ), names.arg=c("Total", "Ever Hospitalized", "Ever in ICU", "
 
 We can see that in most resolved cases, people can recover without even being hospitalized.
 So immune system is making a great effect in this outbreak.
+
+
+# <span style="color:green">Classification Tree Model:</span>
+
+This is a classification tree based model on predicting the chance you can recover from COVID-19.\
+I build this model by using 60% of total cases for training, and test the model on the remaining 40%.\
+I cleaned the active cases and made data binomial. This means in the result section, 1 is for Resolved, and 0 is for Fatal.\
+\
+<span style="color:red">Attention:</span> This model is only for study, the result does`t represent real outcome in reality.
+
+
+```{r install, warning=FALSE, include=FALSE}
+
+#install.packages("rpart")
+#install.packages("caret")
+#install.packages("rpart.plot")
+
+library(rpart)
+library(caret)
+library(rpart.plot)
+
+```
+
+
+```{r tree, echo=FALSE, results="hide", fig.align='center'}
+
+set.seed(731)
+
+clean <- filter(covdat, Outcome != "ACTIVE")
+covdat1 <- mutate(clean, Result = ifelse(Outcome == "RESOLVED", 1, 0) )
+
+#Training Dataset
+train <- covdat1[sample(nrow(covdat1), size=0.6 * nrow(covdat1), replace=FALSE),]
+train <- select(train, Result, `Age Group`, `Currently Hospitalized`, `Currently in ICU`, `Currently Intubated`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
+
+#Testing Dataset
+test <- covdat1[!rownames(covdat1) %in% rownames(train),]
+result <- test$Result
+test <- select(test,`Age Group`, `Currently Hospitalized`, `Currently in ICU`, `Currently Intubated`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
+
+```
+
+```{r input}
+
+test[1,]
+
+```
+
+The input vector is as above.
+FSA stands for the patient`s first three letter of postal code.
+
+```{r data-ratio}
+
+nrow(train)
+nrow(test)
+
+```
+
+There are total 9193 training cases.
+There are total 6129 testing cases.
+
+```{r test-pred, warning=FALSE}
+
+#Fitting Model
+tree <- rpart(Result~`Age Group` + `Currently Hospitalized` + `Currently in ICU` + `Currently Intubated` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
+rpart.plot(tree, main="Tree Model")
+
+Pred <- predict(tree, test, type = "class")
+Reference <- as.matrix(result)
+confusionMatrix(table(Pred, result))
+
+```
+
+The rate of accuracy is approximately 97.7%.\
+And there are 105 cases actually fatal but predicted resolved.\
+And there are 36 cases actually resolved but predicted fatal.\
+\
+
+```{r try, include=FALSE}
+
+try1 <- test[0,]
+try1[1,] <- as.list(c("20 to 29 Years", "No", "No", "No", "No", "No", "No", "Little Portugal", "M6K"))
+try1
+
+try2 <- test[0,]
+try2[1,] <- as.list(c("80 to 89 Years", "No", "No", "No", "No", "No", "No", "Little Portugal", "M6K"))
+
+```
+
+<span style="color:green">Here we can try to create cases to see their outcomes.</span>\
+\
+The first case is in "20 to 29 years" age group. And not currently in ICU, Hospitalized, Intubated.\
+Also not ever in ICU, Hospitalized, Intubated.\
+Neighbourhood is "Little Portugal"\
+FSA is "M6K"\
+\
+The second case is in "80 to 89 Years" age group. And the rest are same\
+\
+\
+
+```{r try1-pred}
+
+predict(tree, try1)
+
+```
+
+Then we can plug the first case into the model.\
+The outcome is 0.75% to be fatal and 99.25% to be resolved.\
+
+```{r try2-pred}
+
+predict(tree, try2)
+
+```
+
+The second case which has an older age, has 21.3% chance to be fatal, and 78.7% to be resolved.\
+In this case, we can identify the age influences on the outcome.
 
 
 # Discussion
