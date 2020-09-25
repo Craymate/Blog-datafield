@@ -294,12 +294,12 @@ covdat1 <- mutate(clean, Result = ifelse(Outcome == "RESOLVED", 1, 0) )
 
 #Training Dataset
 train <- covdat1[sample(nrow(covdat1), size=0.6 * nrow(covdat1), replace=FALSE),]
-train <- select(train, Result, `Age Group`, `Currently Hospitalized`, `Currently in ICU`, `Currently Intubated`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
+train <- select(train, Result, `Age Group`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
 
 #Testing Dataset
 test <- covdat1[!rownames(covdat1) %in% rownames(train),]
 result <- test$Result
-test <- select(test,`Age Group`, `Currently Hospitalized`, `Currently in ICU`, `Currently Intubated`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
+test <- select(test,`Age Group`, `Ever Hospitalized`, `Ever in ICU`, `Ever Intubated`, `Neighbourhood Name`, `FSA`)
 
 ```
 
@@ -321,12 +321,23 @@ nrow(test)
 
 There are total 9193 training cases.
 There are total 6129 testing cases.
+\
+\
+\
 
-```{r test-pred, warning=FALSE}
+```{r test-mod, warning=FALSE}
 
 #Fitting Model
-tree <- rpart(Result~`Age Group` + `Currently Hospitalized` + `Currently in ICU` + `Currently Intubated` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
+tree <- rpart(Result~`Age Group` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
+pdf("Tree Model.pdf") 
 rpart.plot(tree, main="Tree Model")
+dev.off()
+
+```
+
+Here is the Tree Model Plot: https://github.com/Craymate/STA304-2020/blob/master/content/post/Tree%20Model.pdf\
+
+```{r test-pred}
 
 Pred <- predict(tree, test, type = "class")
 Reference <- as.matrix(result)
@@ -342,22 +353,28 @@ And there are 36 cases actually resolved but predicted fatal.\
 ```{r try, include=FALSE}
 
 try1 <- test[0,]
-try1[1,] <- as.list(c("20 to 29 Years", "No", "No", "No", "No", "No", "No", "Little Portugal", "M6K"))
+try1[1,] <- as.list(c("20 to 29 Years", "No", "No", "No", "Little Portugal", "M6K"))
 try1
 
 try2 <- test[0,]
-try2[1,] <- as.list(c("80 to 89 Years", "No", "No", "No", "No", "No", "No", "Little Portugal", "M6K"))
+try2[1,] <- as.list(c("80 to 89 Years", "No", "No", "No", "Little Portugal", "M6K"))
+
+try3 <- test[0,]
+try3[1,] <- as.list(c("80 to 89 Years", "Yes", "Yes", "Yes", "Victoria Village", "M4A"))
 
 ```
 
 <span style="color:green">Here we can try to create cases to see their outcomes.</span>\
 \
-The first case is in "20 to 29 years" age group. And not currently in ICU, Hospitalized, Intubated.\
-Also not ever in ICU, Hospitalized, Intubated.\
+The first case is in "20 to 29 years" age group.And not ever in ICU, Hospitalized, Intubated.\
 Neighbourhood is "Little Portugal"\
 FSA is "M6K"\
 \
 The second case is in "80 to 89 Years" age group. And the rest are same\
+\
+The third case is in "80 to 89 Year" And have ever in ICU, Hospitalized, Intubated.\
+Neighbourhood is "Victoria Village"\
+FSA is "M4A"\
 \
 \
 
@@ -377,8 +394,16 @@ predict(tree, try2)
 ```
 
 The second case which has an older age, has 21.3% chance to be fatal, and 78.7% to be resolved.\
-In this case, we can identify the age influences on the outcome.
+In this case, we can identify the age influences on the outcome.\
 
+```{r try3-pred}
+
+predict(tree, try3)
+
+```
+
+The third case has the same age with the second one. But changed the location and the medical history.\
+The outcome becomes 88.24% to be fatal and 11.76% to be resolved.\
 
 # Discussion
 
@@ -392,6 +417,8 @@ Despite the unknown source of infection cases, the major source is close contact
 In this paper, I omit the NA sources of infection, but it has the highest amount of infections, so this might be critical. Also, the data-set is too small to trace the real characteristics of COVID-19, since it only has data from Toronto. In the future, I will use a larger and well-specified data to further my study.
 
 The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.
+
+This 
 
 # References
 
