@@ -343,7 +343,7 @@ split.fun <- function(x, labs, digits, varlen, faclen)
 
 ```
 
-```{r test-mod, warning=FALSE, echo=FALSE, results="hide"}
+```{r test-mod, warning=FALSE, echo=FALSE, results="hide", fig.align='center'}
 
 #Fitting Model
 tree <- rpart(Result~`Age Group` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
