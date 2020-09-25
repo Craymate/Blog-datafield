@@ -60,7 +60,7 @@ public health.<br />
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-month-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing again.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-age-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>The infection between age groups is nearly normal distributed. This means every age group may have similar possibility to get infected.</p>
+<p>The infection between age groups is nearly normal distributed.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-gender-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Different gender groups have slightly differences in infected amount.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/source-plots-1.png" width="672" style="display: block; margin: auto;" /></p>
@@ -136,6 +136,7 @@ So immune system is making a great effect in this outbreak.</p>
 <p>This is a classification tree based model on predicting the chance you can recover from COVID-19.<br />
 I build this model by using 60% of total cases for training, and test the model on the remaining 40%.<br />
 I cleaned the active cases and made data binomial. This means in the result section, 1 is for Resolved, and 0 is for Fatal.<br />
+I used “Age Group”, “Ever Hospitalized”, “Ever in ICU”, “Ever Intubated”, “Neighbourhood Name”, “FSA” as my variables. I do not use gender as a variable becuase it has no ifluence on the outcomes, as well as source of infections.<br />
 </p>
 <p><span style="color:red">Attention:</span> This model is only for study, the result does`t represent real outcome in reality.
 <span style="color:red">Pre-condition:</span> The input cases must be confirmed.</p>
