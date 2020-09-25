@@ -125,13 +125,13 @@ str(covdat)</code></pre>
 on either the date of symptom onset, specimen collection/test date, or the date reported to
 public health.</p>
 <p>Reported Date is the date the case was reported to public health.</p>
-<div id="section-introduction" class="section level1">
+<div id="introduction" class="section level1">
 <h1>Introduction</h1>
 <p>The major event in the year 2020 is surely the outbreak of COVID-19. It has significantly changed our life. In this paper, I will explore the influence of COVID-19 on different groups of people in Toronto. And also the effectiveness of the response of Government. This paper is mainly based on the confirmed cases` data from Toronto.</p>
 <p>I mainly compared the data from each group of people such as male, female, resolved cases and fatal cases. Then I tried to find out the characteristics in each group and found out the possible reasons behind these data. The major found is that most fatal cases in the Toronto area are elder people, and this disease has indiscriminate influences across different genders.</p>
 <p>First, I traced the curve of the outbreak from Jan 2020 until now and the distribution of cases on each age group in Toronto. Then I analyzed the sources of infections on these cases, and I trace the closed contacted cases curve to see if the policy is effective. In the end, I mainly focus on the fatal and resolved cases and tried to analyze the characteristics behind these two groups. In the future I will keep monitoring the cases in Toronto, seeing if there is another event worth analyzing. This paper`s weakness is that I omit lots of cases that the data related are not available so we cannot trace them, but there might be a major influence in these cases, which could significantly influence our conclusion. Also, the data sample is too small since we only have Toronto data.</p>
 </div>
-<div id="section-for-overall-cases" class="section level1">
+<div id="for-overall-cases" class="section level1">
 <h1><span style="color:purple">For Overall Cases:</span></h1>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/infect-month-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>The peak is in April, and started to decrease in May. There was a boost from March to April. Then it has been decreased to the level in March. But now it shows a sign of increasing again.</p>
@@ -162,25 +162,22 @@ cor.test(full_contact, total_case$count)</code></pre>
 <p>Low P-value from result of cor.test() means total cases is related to close contact cases.
 The sample estimates means that the total cases are estimated 88.1% related by closed contact cases.
 This means social distancing is expected to be a right strategy on this outbreak.</p>
-<pre class="r"><code>outcome &lt;- count(group_by(covdat, Outcome))
-pie(outcome$n, labels=outcome$Outcome, main = &quot;Outcome Distribution&quot;)</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/total-outcome-1.png" width="672" /></p>
 <p>The majority outcomes are resolved.</p>
 </div>
-<div id="section-for-fatal-cases" class="section level1">
+<div id="for-fatal-cases" class="section level1">
 <h1><span style="color:red">For Fatal Cases:</span></h1>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-age-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Most of cases are elder people. This is reasonable because they generally have weaker health conditions. As the age increases, the fatal cases also increase.</p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-gender-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Different gender groups have slightly differences on the fatal outcomes</p>
-<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-gender-percent-1.png" width="672" style="display: block; margin: auto;" />
-(The rates are calculated by the ratio between fatal and total cases from each groups.)<br />
-Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.</p>
-<pre class="r"><code>gender_fata_ratio</code></pre>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/fata-gender-percent-1.png" width="672" style="display: block; margin: auto;" /></p>
 <pre><code>##    Gender      Ratio
 ## 1  FEMALE 0.06926357
 ## 2    MALE 0.06868313
 ## 3 UNKNOWN 0.14977974</code></pre>
+<p>(The rates are calculated by the ratio between fatal and total cases from each groups.)<br />
+Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.</p>
 <pre class="r"><code>fata_mean &lt;- mean(gender_fata_ratio$Ratio)
 fata_mean</code></pre>
 <pre><code>## [1] 0.09590881</code></pre>
@@ -193,7 +190,7 @@ percent</code></pre>
 ## 1 71.34199</code></pre>
 <p>And about 71% of total fatal cases got treated. This indicates that the shortage of hospital resources to general extent.</p>
 </div>
-<div id="section-for-resolved-cases" class="section level1">
+<div id="for-resolved-cases" class="section level1">
 <h1><span style="color:blue">For Resolved Cases:</span></h1>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-age-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>Younger people seems more likely to recover from this.</p>
@@ -202,13 +199,6 @@ percent</code></pre>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/resol-gender-percent-1.png" width="672" style="display: block; margin: auto;" /></p>
 <p>(The rates are calculated by the ratio between resolved and total cases from each groups.)<br />
 Gender nearly makes no influence among different gender groups.</p>
-<pre class="r"><code>gender_resol_ratio</code></pre>
-<pre><code>##        Gender     Ratio
-## 1      FEMALE 0.8649303
-## 2        MALE 0.8544446
-## 3       OTHER 1.0000000
-## 4 TRANSGENDER 1.0000000
-## 5     UNKNOWN 0.8061674</code></pre>
 <pre class="r"><code>resol_mean &lt;- mean(gender_resol_ratio$Ratio)
 resol_mean</code></pre>
 <pre><code>## [1] 0.9051085</code></pre>
@@ -217,7 +207,7 @@ resol_mean</code></pre>
 <p>We can see that in most resolved cases, people can recover without even being hospitalized.
 So immune system is making a great effect in this outbreak.</p>
 </div>
-<div id="section-classification-tree-model" class="section level1">
+<div id="classification-tree-model" class="section level1">
 <h1><span style="color:green">Classification Tree Model:</span></h1>
 <p>This is a classification tree based model on predicting the chance you can recover from COVID-19.<br />
 I build this model by using 60% of total cases for training, and test the model on the remaining 40%.<br />
@@ -241,13 +231,7 @@ There are total 6129 testing cases.<br />
 <br />
 <br />
 </p>
-<pre class="r"><code>#Fitting Model
-tree &lt;- rpart(Result~`Age Group` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = &quot;class&quot;)
-pdf(&quot;Tree Model.pdf&quot;) 
-rpart.plot(tree, main=&quot;Tree Model&quot;)
-dev.off()</code></pre>
-<pre><code>## png 
-##   2</code></pre>
+<p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/test-mod-1.png" width="672" /></p>
 <p>Here is the Tree Model Plot: <a href="https://github.com/Craymate/STA304-2020/blob/master/content/post/Tree%20Model.pdf\" class="uri">https://github.com/Craymate/STA304-2020/blob/master/content/post/Tree%20Model.pdf\</a></p>
 <pre class="r"><code>Pred &lt;- predict(tree, test, type = &quot;class&quot;)
 Reference &lt;- as.matrix(result)
@@ -317,18 +301,18 @@ In this case, we can identify the age influences on the outcome.<br />
 The outcome becomes 88.24% to be fatal and 11.76% to be resolved.<br />
 </p>
 </div>
-<div id="section-discussion" class="section level1">
+<div id="discussion" class="section level1">
 <h1>Discussion</h1>
 <p>COVID-19 is making no difference on different gender groups, but age groups. Elder people cases are more likely to be fatal based on Toronto data. And recovery of this disease is heavily based on immune system. Also, every age group could have equally chance to get infected.</p>
 <p>Despite the unknown source of infection cases, the major source is close contact. The government published a law in April to enforce social distancing. This law is making its effect in June, and it is effective. The level of confirmed cases in Toronto in Sept shows the sign of increasing now.</p>
 </div>
-<div id="section-weakness" class="section level1">
+<div id="weakness" class="section level1">
 <h1>Weakness</h1>
 <p>In this paper, I omit the NA sources of infection, but it has the highest amount of infections, so this might be critical. Also, the data-set is too small to trace the real characteristics of COVID-19, since it only has data from Toronto. In the future, I will use a larger and well-specified data to further my study.</p>
 <p>The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.</p>
 <p>This</p>
 </div>
-<div id="section-references" class="section level1">
+<div id="references" class="section level1">
 <h1>References</h1>
 <ul>
 <li><a href="https://www.toronto.ca/home/covid-19/covid-19-protect-yourself-others/covid-19-reduce-virus-spread/" class="uri">https://www.toronto.ca/home/covid-19/covid-19-protect-yourself-others/covid-19-reduce-virus-spread/</a></li>
@@ -338,6 +322,10 @@ The outcome becomes 88.24% to be fatal and 11.76% to be resolved.<br />
 <li>Sharla Gelfand (2020). opendatatoronto: Access the City of Toronto Open Data Portal.
 <a href="https://sharlagelfand.github.io/opendatatoronto/" class="uri">https://sharlagelfand.github.io/opendatatoronto/</a>,
 <a href="https://github.com/sharlagelfand/opendatatoronto/" class="uri">https://github.com/sharlagelfand/opendatatoronto/</a>.</li>
+<li>Terry Therneau and Beth Atkinson (2019). rpart: Recursive Partitioning and Regression Trees. R package version
+4.1-15. <a href="https://CRAN.R-project.org/package=rpart" class="uri">https://CRAN.R-project.org/package=rpart</a></li>
+<li>Stephen Milborrow (2020). rpart.plot: Plot ‘rpart’ Models: An Enhanced Version of ‘plot.rpart’. R package
+version 3.0.9. <a href="https://CRAN.R-project.org/package=rpart.plot" class="uri">https://CRAN.R-project.org/package=rpart.plot</a></li>
 </ul>
 </div>
 

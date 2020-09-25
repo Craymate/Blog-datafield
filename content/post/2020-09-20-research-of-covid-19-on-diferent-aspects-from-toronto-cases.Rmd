@@ -4,7 +4,6 @@ author: "Zhendong Zhang"
 date: 2020-09-20
 abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases."
 output: html_document
-runtime: shiny
 ---
 
 ```{r setup, include=FALSE}
@@ -121,7 +120,7 @@ Low P-value from result of cor.test() means total cases is related to close cont
 The sample estimates means that the total cases are estimated 88.1% related by closed contact cases.
 This means social distancing is expected to be a right strategy on this outbreak.
 
-```{r total-outcome}
+```{r total-outcome, echo=FALSE}
 
 outcome <- count(group_by(covdat, Outcome))
 pie(outcome$n, labels=outcome$Outcome, main = "Outcome Distribution")
@@ -156,12 +155,13 @@ ggplot(gender_fata_total, aes(x=`Client Gender`, y=n, fill = Class)) + geom_bar(
 
 Different gender groups have slightly differences on the fatal outcomes
 
-```{r fata-gender-percent, echo=FALSE, results="hide", fig.align='center'}
+```{r fata-gender-percent, echo=FALSE, fig.align='center'}
 
 total_filtered_gender <- filter(total_gender, `Client Gender` != "TRANSGENDER", `Client Gender` != "OTHER")
 gender_fata_ratio <- data.frame(Gender = fata_gender$`Client Gender`, Ratio = fata_gender$n / total_filtered_gender$n)
 
 ggplot(gender_fata_ratio, aes(x=Gender, y=Ratio)) + geom_bar(stat="identity") + labs(x = "Gender", y = "Fatal Rate", title = "Fatal Rate Among Different Genders") + theme(plot.title = element_text(hjust = 0.5))
+gender_fata_ratio
 
 ```
 (The rates are calculated by the ratio between fatal and total cases from each groups.)\
@@ -169,7 +169,6 @@ Gender makes no influence between Male and Female. Unknown`s fatal rate is high,
 
 ```{r fata-ratio}
 
-gender_fata_ratio
 fata_mean <- mean(gender_fata_ratio$Ratio)
 fata_mean
 
@@ -231,6 +230,7 @@ Different gender groups also have slightly differences on the resolved outcomes
 gender_resol_ratio <- data.frame(Gender = resol_gender$`Client Gender`, Ratio = resol_gender$n / total_gender$n)
 
 ggplot(gender_resol_ratio, aes(x=Gender, y=Ratio)) + geom_bar(stat="identity") + labs(x = "Gender", y = "Resolve Rate", title = "Resolved Rate Among Different Genders") + theme(plot.title = element_text(hjust = 0.5))
+gender_resol_ratio
 
 ```
 
@@ -240,7 +240,6 @@ Gender nearly makes no influence among different gender groups.
 
 ```{r resol-ratio}
 
-gender_resol_ratio
 resol_mean <- mean(gender_resol_ratio$Ratio)
 resol_mean
 
@@ -285,7 +284,7 @@ library(rpart.plot)
 ```
 
 
-```{r tree, echo=FALSE, results="hide", fig.align='center'}
+```{r tree, echo=FALSE, results="hide"}
 
 set.seed(731)
 
@@ -325,13 +324,15 @@ There are total 6129 testing cases.
 \
 \
 
-```{r test-mod, warning=FALSE}
+```{r test-mod, warning=FALSE, echo=FALSE, results="hide"}
 
 #Fitting Model
 tree <- rpart(Result~`Age Group` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
 pdf("Tree Model.pdf") 
 rpart.plot(tree, main="Tree Model")
 dev.off()
+
+rpart.plot(tree, main="Tree Model")
 
 ```
 
@@ -429,5 +430,8 @@ This
 - Sharla Gelfand (2020). opendatatoronto: Access the City of Toronto Open Data Portal.
   https://sharlagelfand.github.io/opendatatoronto/,
   https://github.com/sharlagelfand/opendatatoronto/.
-
+- Terry Therneau and Beth Atkinson (2019). rpart: Recursive Partitioning and Regression Trees. R package version
+  4.1-15. https://CRAN.R-project.org/package=rpart
+- Stephen Milborrow (2020). rpart.plot: Plot 'rpart' Models: An Enhanced Version of 'plot.rpart'. R package
+  version 3.0.9. https://CRAN.R-project.org/package=rpart.plot
 
