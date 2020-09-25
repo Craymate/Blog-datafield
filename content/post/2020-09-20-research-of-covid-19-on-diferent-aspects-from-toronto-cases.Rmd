@@ -166,7 +166,7 @@ ggplot(gender_fata_ratio, aes(x=Gender, y=Ratio)) + geom_bar(stat="identity") + 
 gender_fata_ratio
 
 ```
-(The rates are calculated by the ratio between fatal and total cases from each groups.)\
+(The fatal ratio are calculated by the ratio between fatal and total cases from each groups.)\
 Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.
 
 ```{r fata-ratio}
@@ -439,7 +439,7 @@ In this paper, I omit the NA sources of infection, but it has the highest amount
 
 The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.\
 
-This tree-based model does not have much precision on predicting even though the testing result is good. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.\
+This tree-based model does not have much precision on predicting even though the testing result is good, and the outcomes are just based on  the portion between each class and total. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.\
 
 # References
 

@@ -100,7 +100,7 @@ This means social distancing is expected to be a right strategy on this outbreak
 ## 1  FEMALE 0.06926357
 ## 2    MALE 0.06868313
 ## 3 UNKNOWN 0.14977974</code></pre>
-<p>(The rates are calculated by the ratio between fatal and total cases from each groups.)<br />
+<p>(The fatal ratio are calculated by the ratio between fatal and total cases from each groups.)<br />
 Gender makes no influence between Male and Female. Unknown`s fatal rate is high, because the total amount of samples from Unknown is small.</p>
 <pre class="r"><code>fata_mean &lt;- mean(gender_fata_ratio$Ratio)
 fata_mean</code></pre>
@@ -239,7 +239,7 @@ The outcome becomes 88.24% to be fatal and 11.76% to be resolved.<br />
 </p>
 <p>The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.<br />
 </p>
-<p>This tree-based model does not have much precision on predicting even though the testing result is good. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.<br />
+<p>This tree-based model does not have much precision on predicting even though the testing result is good, and the outcomes are just based on the portion between each class and total. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.<br />
 </p>
 </div>
 <div id="references" class="section level1">
