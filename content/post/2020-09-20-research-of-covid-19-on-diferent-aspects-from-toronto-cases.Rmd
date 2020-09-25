@@ -272,6 +272,7 @@ I cleaned the active cases and made data binomial. This means in the result sect
 I used "Age Group", "Ever Hospitalized", "Ever in ICU", "Ever Intubated", "Neighbourhood Name", "FSA" as my variables. I do not use gender as a variable becuase it has no ifluence on the outcomes, as well as source of infections.\
 
 <span style="color:red">Attention:</span> This model is only for study, the result does`t represent real outcome in reality.\
+\
 <span style="color:red">Pre-condition:</span> The input cases must be confirmed.
 
 
