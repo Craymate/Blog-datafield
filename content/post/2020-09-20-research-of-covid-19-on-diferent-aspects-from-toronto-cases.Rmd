@@ -2,7 +2,7 @@
 title: "COVID-19 on Diferent Aspects from Toronto Cases"
 author: "Zhendong Zhang"
 date: 2020-09-20
-abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases."
+abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable."
 output: html_document
 ---
 
@@ -22,24 +22,26 @@ resou <- list_package_resources("https://open.toronto.ca/dataset/covid-19-cases-
 covdat <- get_resource(resou)
 str(covdat)
 variable.names(covdat)
-covdat
+
 ```
 
-The dataset(covdat) is total reported cases of COVID-19 in Toronto
+The dataset(covdat) is total reported cases of COVID-19 in Toronto\
 
 Episode Date is an estimate of symptom onset date in a case. It is calculated hierarchically based
 on either the date of symptom onset, specimen collection/test date, or the date reported to
-public health.
+public health.\
 
-Reported Date is the date the case was reported to public health.
+Reported Date is the date the case was reported to public health.\
 
 # Introduction
 
-The major event in the year 2020 is surely the outbreak of COVID-19. It has significantly changed our life. In this paper, I will explore the influence of COVID-19 on different groups of people in Toronto. And also the effectiveness of the response of Government. This paper is mainly based on the confirmed cases` data from Toronto.
+The major event in the year 2020 is surely the outbreak of COVID-19. It has significantly changed our life. In this paper, I will explore the influence of COVID-19 on different groups of people in Toronto. And also the effectiveness of the response of Government. This paper is mainly based on the confirmed cases` data from Toronto.\
 
-I mainly compared the data from each group of people such as male, female, resolved cases and fatal cases. Then I tried to find out the characteristics in each group and found out the possible reasons behind these data. The major found is that most fatal cases in the Toronto area are elder people, and this disease has indiscriminate influences across different genders.
+I mainly compared the data from each group of people such as male, female, resolved cases and fatal cases. Then I tried to find out the characteristics in each group and found out the possible reasons behind these data. The major found is that most fatal cases in the Toronto area are elder people, and this disease has indiscriminate influences across different genders.\
 
-First, I traced the curve of the outbreak from Jan 2020 until now and the distribution of cases on each age group in Toronto. Then I analyzed the sources of infections on these cases, and I trace the closed contacted cases curve to see if the policy is effective. In the end, I mainly focus on the fatal and resolved cases and tried to analyze the characteristics behind these two groups. In the future I will keep monitoring the cases in Toronto, seeing if there is another event worth analyzing. This paper`s weakness is that I omit lots of cases that the data related are not available so we cannot trace them, but there might be a major influence in these cases, which could significantly influence our conclusion. Also, the data sample is too small since we only have Toronto data.
+First, I traced the curve of the outbreak from Jan 2020 until now and the distribution of cases on each age group in Toronto. Then I analyzed the sources of infections on these cases, and I trace the closed contacted cases curve to see if the policy is effective. In the end, I mainly focus on the fatal and resolved cases and tried to analyze the characteristics behind these two groups. In the future I will keep monitoring the cases in Toronto, seeing if there is another event worth analyzing. This paper`s weakness is that I omit lots of cases that the data related are not available so we cannot trace them, but there might be a major influence in these cases, which could significantly influence our conclusion. Also, the data sample is too small since we only have Toronto data. In the end, I developed a tree-based model on predicting the possibilities of outcomes for a confirmed case.\
+
+My source code is here: https://github.com/Craymate/STA304-2020/blob/master/content/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases.Rmd
 
 
 # <span style="color:purple">For Overall Cases:</span>
@@ -267,8 +269,9 @@ So immune system is making a great effect in this outbreak.
 This is a classification tree based model on predicting the chance you can recover from COVID-19.\
 I build this model by using 60% of total cases for training, and test the model on the remaining 40%.\
 I cleaned the active cases and made data binomial. This means in the result section, 1 is for Resolved, and 0 is for Fatal.\
-\
+
 <span style="color:red">Attention:</span> This model is only for study, the result does`t represent real outcome in reality.
+<span style="color:red">Pre-condition:</span> The input cases must be confirmed.
 
 
 ```{r install, warning=FALSE, include=FALSE}
@@ -321,18 +324,32 @@ nrow(test)
 There are total 9193 training cases.
 There are total 6129 testing cases.
 \
-\
-\
+
+
+```{r shorten-lab, echo=FALSE, results="hide"}
+
+split.fun <- function(x, labs, digits, varlen, faclen)
+{
+    # replace commas with spaces (needed for strwrap)
+    labs <- gsub(",", " ", labs)
+    for(i in 1:length(labs)) {
+        # split labs[i] into multiple lines
+        labs[i] <- paste(strwrap(labs[i], width=25), collapse="\n")
+    }
+    labs
+}
+
+```
 
 ```{r test-mod, warning=FALSE, echo=FALSE, results="hide"}
 
 #Fitting Model
 tree <- rpart(Result~`Age Group` + `Ever Hospitalized` + `Ever in ICU` + `Ever Intubated` + `Neighbourhood Name` + `FSA`, data=covdat1, method = "class")
 pdf("Tree Model.pdf") 
-rpart.plot(tree, main="Tree Model")
+rpart.plot(tree, split.fun=split.fun, main="Tree Model")
 dev.off()
 
-rpart.plot(tree, main="Tree Model")
+rpart.plot(tree, split.fun=split.fun, main="Tree Model")
 
 ```
 
@@ -349,7 +366,7 @@ confusionMatrix(table(Pred, result))
 The rate of accuracy is approximately 97.7%.\
 And there are 105 cases actually fatal but predicted resolved.\
 And there are 36 cases actually resolved but predicted fatal.\
-\
+
 
 ```{r try, include=FALSE}
 
@@ -366,18 +383,18 @@ try3[1,] <- as.list(c("80 to 89 Years", "Yes", "Yes", "Yes", "Victoria Village",
 ```
 
 <span style="color:green">Here we can try to create cases to see their outcomes.</span>\
-\
+
 The first case is in "20 to 29 years" age group.And not ever in ICU, Hospitalized, Intubated.\
 Neighbourhood is "Little Portugal"\
 FSA is "M6K"\
-\
+
 The second case is in "80 to 89 Years" age group. And the rest are same\
-\
+
 The third case is in "80 to 89 Year" And have ever in ICU, Hospitalized, Intubated.\
 Neighbourhood is "Victoria Village"\
 FSA is "M4A"\
 \
-\
+
 
 ```{r try1-pred}
 
@@ -408,18 +425,19 @@ The outcome becomes 88.24% to be fatal and 11.76% to be resolved.\
 
 # Discussion
 
-COVID-19 is making no difference on different gender groups, but age groups. Elder people cases are more likely to be fatal based on Toronto data. And recovery of this disease is heavily based on immune system. Also, every age group could have equally chance to get infected.
+COVID-19 is making no difference on different gender groups, but age groups. Elder people cases are more likely to be fatal based on Toronto data. And recovery of this disease is heavily based on immune system. Also, every age group could have equally chance to get infected.\
 
-Despite the unknown source of infection cases, the major source is close contact. The government published a law in April to enforce social distancing. This law is making its effect in June, and it is effective. The level of confirmed cases in Toronto in Sept shows the sign of increasing now.
+Despite the unknown source of infection cases, the major source is close contact. The government published a law in April to enforce social distancing. This law is making its effect in June, and it is effective. The level of confirmed cases in Toronto in Sept shows the sign of increasing now.\
 
+We can identify the influences of medical history from COVID-19 in the tree model, as well as the influences by age. With age increasing, the possibility of fatal is increasing. And if a patient has ever been to hospital, ICU or intubated, the possibility also has different levels of increases.\
 
 # Weakness
 
-In this paper, I omit the NA sources of infection, but it has the highest amount of infections, so this might be critical. Also, the data-set is too small to trace the real characteristics of COVID-19, since it only has data from Toronto. In the future, I will use a larger and well-specified data to further my study.
+In this paper, I omit the NA sources of infection, but it has the highest amount of infections, so this might be critical. Also, the data-set is too small to trace the real characteristics of COVID-19, since it only has data from Toronto. In the future, I will use a larger and well-specified data to further my study.\
 
-The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.
+The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.\
 
-This 
+This tree-based model does not have much precision on predicting even though the testing result is good. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.\
 
 # References
 
