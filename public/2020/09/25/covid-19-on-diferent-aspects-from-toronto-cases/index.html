@@ -117,7 +117,7 @@ public health.<br />
 </p>
 <p>First, I traced the curve of the outbreak from Jan 2020 until now and the distribution of cases on each age group in Toronto. Then I analyzed the sources of infections on these cases, and I trace the closed contacted cases curve to see if the policy is effective. In the end, I mainly focus on the fatal and resolved cases and tried to analyze the characteristics behind these two groups. In the future I will keep monitoring the cases in Toronto, seeing if there is another event worth analyzing. This paper`s weakness is that I omit lots of cases that the data related are not available so we cannot trace them, but there might be a major influence in these cases, which could significantly influence our conclusion. Also, the data sample is too small since we only have Toronto data. In the end, I developed a tree-based model on predicting the possibilities of outcomes for a confirmed case.<br />
 </p>
-<p>My source code is here: <a href="https://github.com/Craymate/STA304-2020/blob/master/content/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases.Rmd" class="uri">https://github.com/Craymate/STA304-2020/blob/master/content/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases.Rmd</a></p>
+<p>My source code is here: <a href="https://github.com/Craymate/Blog-datafield/blob/master/content/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases.Rmd" class="uri">https://github.com/Craymate/Blog-datafield/blob/master/content/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases.Rmd</a></p>
 </div>
 <div id="for-overall-cases" class="section level1">
 <h1><span style="color:purple">For Overall Cases:</span></h1>
@@ -221,7 +221,7 @@ FSA stands for the patient`s first three letter of postal code.</p>
 There are total 6129 testing cases.<br />
 </p>
 <p><img src="/post/2020-09-20-research-of-covid-19-on-diferent-aspects-from-toronto-cases_files/figure-html/test-mod-1.png" width="672" style="display: block; margin: auto;" /></p>
-<p>Here is the Tree Model Plot: <a href="https://github.com/Craymate/STA304-2020/blob/master/content/post/Tree%20Model.pdf\" class="uri">https://github.com/Craymate/STA304-2020/blob/master/content/post/Tree%20Model.pdf\</a></p>
+<p>Here is the Tree Model Plot: <a href="https://github.com/Craymate/Blog-datafield/blob/master/content/post/Tree%20Model.pdf" class="uri">https://github.com/Craymate/Blog-datafield/blob/master/content/post/Tree%20Model.pdf</a></p>
 <pre class="r"><code>Pred &lt;- predict(tree, test, type = &quot;class&quot;)
 Reference &lt;- as.matrix(result)
 confusionMatrix(table(Pred, result))</code></pre>
