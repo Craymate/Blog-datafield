@@ -7,7 +7,7 @@ output: html_document
 
 # Abstract
 
-In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable.
+In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable. In the end, I found that age has the major influences on the outcomes ,and close contact is the major known source of infections.
 
 
 ```{r setup, include=FALSE}

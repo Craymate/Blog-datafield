@@ -9,7 +9,7 @@ output: html_document
 
 <div id="abstract" class="section level1">
 <h1>Abstract</h1>
-<p>In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable.</p>
+<p>In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable. In the end, I found that age has the major influences on the outcomes ,and close contact is the major known source of infections.</p>
 <pre class="r"><code>resou &lt;- list_package_resources(&quot;https://open.toronto.ca/dataset/covid-19-cases-in-toronto/&quot;)
 covdat &lt;- get_resource(resou)
 str(covdat)</code></pre>
