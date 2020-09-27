@@ -126,7 +126,7 @@ Low P-value from result of cor.test() means total cases is related to close cont
 The sample estimates means that the total cases are estimated 88.1% related by closed contact cases.
 This means social distancing is expected to be a right strategy on this outbreak.
 
-```{r total-outcome, echo=FALSE}
+```{r total-outcome, echo=FALSE, fig.align='center'}
 
 outcome <- count(group_by(covdat, Outcome))
 pie(outcome$n, labels=outcome$Outcome, main = "Outcome Distribution")
