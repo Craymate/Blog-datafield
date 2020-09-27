@@ -1,13 +1,15 @@
 ---
 title: "COVID-19 on Diferent Aspects from Toronto Cases"
 author: "Zhendong Zhang"
-date: 2020-09-25
-abstract: "In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable."
+date: 2020-09-26
 output: html_document
 ---
 
 
 
+<div id="abstract" class="section level1">
+<h1>Abstract</h1>
+<p>In this paper I will explore the data of COVID-19 cases from Toronto, and analyzing it in different aspects such as gender groups, age groups, fatal and resolved cases. Also, I will develop a model to pursue deeper influences from the variables and to know the level of influences by each variable.</p>
 <pre class="r"><code>resou &lt;- list_package_resources(&quot;https://open.toronto.ca/dataset/covid-19-cases-in-toronto/&quot;)
 covdat &lt;- get_resource(resou)
 str(covdat)</code></pre>
@@ -45,9 +47,10 @@ public health.<br />
 </p>
 <p>Reported Date is the date the case was reported to public health.<br />
 </p>
+</div>
 <div id="introduction" class="section level1">
 <h1>Introduction</h1>
-<p>The major event in the year 2020 is surely the outbreak of COVID-19. It has significantly changed our life. In this paper, I will explore the influence of COVID-19 on different groups of people in Toronto. And also the effectiveness of the response of Government. This paper is mainly based on the confirmed cases` data from Toronto.<br />
+<p>The major event in the year 2020 is the outbreak of COVID-19. It has significantly changed our life. In this paper, I will explore the influence of COVID-19 on different groups of people in Toronto. And also the effectiveness of the response of Government. This paper is mainly based on the confirmed cases` data from Toronto.<br />
 </p>
 <p>I mainly compared the data from each group of people such as male, female, resolved cases and fatal cases. Then I tried to find out the characteristics in each group and found out the possible reasons behind these data. The major found is that most fatal cases in the Toronto area are elder people, and this disease has indiscriminate influences across different genders.<br />
 </p>
@@ -239,12 +242,15 @@ The outcome becomes 88.24% to be fatal and 11.76% to be resolved.<br />
 </p>
 <p>The data in this spreadsheet are subject to change as public health investigations into reported cases and continuous quality improvement initiatives are ongoing, and additional cases continue to be reported. The data will be completely refreshed and overwritten on a weekly basis.<br />
 </p>
-<p>This tree-based model does not have much precision on predicting even though the testing result is good, and the outcomes are just based on the proportion between each class and total. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it.<br />
+<p>This tree-based model does not have much precision on predicting even though the testing result is good, and the outcomes are just based on the proportion between each class and total. Because this model is lack of advanced algorithms and sample data, we can only identify some variable influences by it. Of course, in the future, I will develop more perfect model and more developed algorithm to increase the precision.<br />
 </p>
 </div>
 <div id="references" class="section level1">
 <h1>References</h1>
 <ul>
+<li><a href="https://en.wikipedia.org/wiki/2020_in_Canada#Events_cancelled_as_a_result_of_the_COVID-19_pandemic" class="uri">https://en.wikipedia.org/wiki/2020_in_Canada#Events_cancelled_as_a_result_of_the_COVID-19_pandemic</a></li>
+<li><a href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/prevention-risks.html?&amp;utm_campaign=gc-hc-sc-coronavirus2021-ao-2021-0005-9834796012&amp;utm_medium=search&amp;utm_source=google_grant-ads-107802327544&amp;utm_content=text-en-434601690167&amp;utm_term=%2Bcovid" class="uri">https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/prevention-risks.html?&amp;utm_campaign=gc-hc-sc-coronavirus2021-ao-2021-0005-9834796012&amp;utm_medium=search&amp;utm_source=google_grant-ads-107802327544&amp;utm_content=text-en-434601690167&amp;utm_term=%2Bcovid</a></li>
+<li><a href="https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/health-professionals/interim-guidance-cases-contacts.html" class="uri">https://www.canada.ca/en/public-health/services/diseases/2019-novel-coronavirus-infection/health-professionals/interim-guidance-cases-contacts.html</a></li>
 <li><a href="https://www.toronto.ca/home/covid-19/covid-19-protect-yourself-others/covid-19-reduce-virus-spread/" class="uri">https://www.toronto.ca/home/covid-19/covid-19-protect-yourself-others/covid-19-reduce-virus-spread/</a></li>
 <li><a href="https://open.toronto.ca/dataset/covid-19-cases-in-toronto/" class="uri">https://open.toronto.ca/dataset/covid-19-cases-in-toronto/</a></li>
 <li>Wickham et al., (2019). Welcome to the tidyverse. Journal of Open Source Software, 4(43), 1686,
