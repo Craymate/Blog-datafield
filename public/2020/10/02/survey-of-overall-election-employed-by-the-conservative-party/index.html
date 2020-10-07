@@ -1,0 +1,483 @@
+<!DOCTYPE html>
+<html lang="en-us">
+  <head>
+    <meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="generator" content="Hugo 0.75.1" />
+
+
+<title>Survey of Overall Election Employed by the Conservative Party - Craymate`s Datafield</title>
+<meta property="og:title" content="Survey of Overall Election Employed by the Conservative Party - Craymate`s Datafield">
+
+
+  <link href='/favicon1.ico' rel='icon' type='image/x-icon'/>
+
+
+
+  
+
+
+
+
+
+
+
+
+<link href='//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/styles/github.min.css' rel='stylesheet' type='text/css' />
+
+
+
+<link rel="stylesheet" href="/css/fonts.css" media="all">
+<link rel="stylesheet" href="/css/main.css" media="all">
+
+
+
+  </head>
+  <body>
+    <div class="wrapper">
+      <header class="header">
+        <nav class="nav">
+  <a href="/" class="nav-logo">
+    <img src="/images/logo.png"
+         width="50"
+         height="50"
+         alt="Logo">
+  </a>
+
+  <ul class="nav-links">
+    
+    <li><a href="/about/">About</a></li>
+    
+    <li><a href="https://github.com/Craymate/Blog-datafield">GitHub</a></li>
+    
+  </ul>
+</nav>
+
+      </header>
+
+<main class="content" role="main">
+
+  <article class="article">
+    
+    <span class="article-duration">17 min read</span>
+    
+
+    <h1 class="article-title">Survey of Overall Election Employed by the Conservative Party</h1>
+
+    
+    <span class="article-author">Zhendong Zhang</span>
+    <span class="article-date">2020-10-02</span>
+    
+
+    <div class="article-content">
+      
+
+
+<div id="executive-summary" class="section level2">
+<h2>Executive Summary</h2>
+<p>Nearly all political action committees, city council members, political consultants, school board districts, government agencies, rely on offline or online surveys to get the insights they need to drive their causes and run quick polls on hot-button issues.</p>
+<p>The importance of investigation is self-evident, and a good polling update of investigation must not only reflect the reality, but also help political parties adjust the focus of their campaign activities and achieve more election goals within a limited budget.</p>
+<p>Throughout the report, I was employed by the Conservative Party to complete the following tasks:</p>
+<ol style="list-style-type: decimal">
+<li><p>Based on the entire election environment, analyze the significance of the research report and promote it to a wide range of application scenarios, which can help customers understand the significance of the survey;</p></li>
+<li><p>Design the questionnaire based on the survey method and put it to the target people in different forms, which will help the survey designer to obtain data;</p></li>
+<li><p>Data analysis based on the simulation results, which can verify the correctness of the method;</p></li>
+<li><p>Discuss possible biases and errors in the questionnaire and study how they affect the results of the survey, which will show us the things behind the election;</p></li>
+<li><p>Display the methods and references used in the entire report in the report.</p></li>
+</ol>
+</div>
+<div id="introduction" class="section level2">
+<h2>Introduction</h2>
+<p>The whole polling status updating is a survey of how I conduct this research to help our client, that is, the Conservative.</p>
+<p>Focusing on present<sup>1</sup>, the Liberals hold a comfortable lead in Atlantic Canada and are ahead of the Conservatives in British Columbia. Two-thirds of the Liberals’ seat advantage nationwide is due to Ontario, where the party has a lead over the Conservatives. The Liberals are also narrowly in front of the Bloc in Quebec. The Conservatives are solidly in first in Alberta and the Prairies. Both the NDP and the Greens have their strongest results in B.C.</p>
+<p>When designing the questions and conducting the survey, all the work should be put into certain context. We can use survey to identify supporters for campaign, gather feedback from constituents, organize rallies(or potential rallies), get feedback of present political event, help the winning local election.</p>
+<p>Also the code for this post is in the Git Repo: <a href="https://github.com/Craymate/Survey-Election" class="uri">https://github.com/Craymate/Survey-Election</a></p>
+</div>
+<div id="survey-methodology" class="section level2">
+<h2>Survey Methodology</h2>
+<p>When employed by certain political party, writing clear and neutral survey questions is not easy like it seems. There’s more survey methodology to demystify when conducting our research, and the question wording is important too.</p>
+<div id="survey-objections" class="section level3">
+<h3>Survey Objections</h3>
+<p>The object of the survey is:</p>
+<ol style="list-style-type: decimal">
+<li><p>To find out the main supporters and get contact.</p></li>
+<li><p>To get feedback of different local districts and find their focal point including what they want to keep most and what they want to change most.</p></li>
+<li><p>To find room to increase votes and help make real-time adjustments to policies.</p></li>
+</ol>
+</div>
+<div id="sample-frames-and-methodology" class="section level3">
+<h3>Sample Frames and Methodology</h3>
+<ol style="list-style-type: decimal">
+<li><p>This survey aims at all civilizations in Canada, so we can get information from all districts and use differences between districts to help political parties make customized decisions.</p></li>
+<li><p>This survey use online and offline survey methods are used to distribute questionnaires in public places with equal probability and random sampling, which is usually called Simple
+Random Sampling Without Replacement (SRSWOR)<sup>2</sup>, and the questionnaires are distributed on the Internet using a neutral platform.</p></li>
+</ol>
+</div>
+<div id="relevant-data-colletion" class="section level3">
+<h3>Relevant Data Colletion</h3>
+<p>In the process of designing the questionnaire, it is necessary to design “irrelevant questions” that are different from the target question to help the data analyst classify the sample, or analyze whether the collected sample is valid. This often includes:</p>
+<ol style="list-style-type: decimal">
+<li><p>Gender and age (or even occupation), data analysts usually need to ensure that the questionnaire is distributed to all types of people.</p></li>
+<li><p>Simple daily questions. When questionnaire collectors find that subjects have abnormal answers to such questions, they can usually screen out invalid questionnaires during the result entry process.</p></li>
+</ol>
+</div>
+<div id="accuracy-estimation" class="section level3">
+<h3>Accuracy Estimation</h3>
+<p>The parameter estimates obtained by sampling are usually biased. Part of this bias comes from the cognitive bias of the subjects on the same question, and part comes from the bias in the questionnaire design. In particular:</p>
+<ol style="list-style-type: decimal">
+<li><p>The position of the questionnaire designer will affect the design of the questionnaire and lead to deviations;</p></li>
+<li><p>The order of the questions may induce participants to answer an important question from a certain angle (what the questionnaire designer hopes to get). In this way, using prejudice to induce participants to answer will often get “good” results but cannot affect the votes of neutrals in the long term, because they are also susceptible to other information interference. At the same time, it will also cause the political parties to produce miscalculations on the situation and thus formulate wrong campaign strategies.</p></li>
+</ol>
+</div>
+<div id="reach-respondents-and-dealing-with-non-response" class="section level3">
+<h3>Reach Respondents and Dealing with Non-response</h3>
+<p>In fact, dealing with Non-responses is the same thing as finding the target respondents. The length of the questionnaire (number of questions), the text layout of the question, and even the environment under which the survey is conducted will affect the quality of the questionnaire, which increases the probability of Non-responses and reduces the probability of obtaining target information.</p>
+<p>In the Internet space, in order to obtain higher-quality sample information, the usual methods are to select groups or individuals that they trust to conduct surveys, or to issue questionnaires on platforms that they are familiar with daily. But usually this approach has strong prejudices. For example, we know that the in-depth users of different social platforms often have very big differences in group characteristics from the “popular” we want to investigate, and the similarity between relatives and friends is even greater. It violates the principle of medium probability of the interviewee in the entire target group.</p>
+<p>To sum up, in order to ensure the unbiased and effective sampling, we choose to put the number of questionnaires based on the proportion of users on different social software, and choose different public places to put questionnaires commensurate with the proportion of people flow, which use the stratified sampling method.</p>
+</div>
+<div id="cost-estimation" class="section level3">
+<h3>Cost estimation</h3>
+<p>Regardless of whether it is filled online or offline, we will give participants an incentive ranging from $1-100 (the higher the bonus, the lower the probability of obtaining), and the dairy products of brand A (virtual brand) or B Daily cleaning appliances of the brand (virtual brand) are given as incentives to raise sponsorship as the funding for this survey. After conversion, it can be considered that there is no actual net expenditure in this survey.</p>
+</div>
+<div id="privacy-protection" class="section level3">
+<h3>Privacy Protection</h3>
+<p>Sometimes researchers are confused about how to determine what information is private. Subject’s privacy protection is an important means and ethical requirement for obtaining target information, and behaviors that respect privacy often bring more votes and favors to political parties (except for individuals who advocate that the government should obtain more citizens’ information).</p>
+</div>
+</div>
+<div id="survey-design" class="section level2">
+<h2>Survey Design</h2>
+<div id="motivation" class="section level3">
+<h3>Motivation</h3>
+<p>Our client, the Conservative, is left behind the election polling. After the selection of our new leader, we got a small bump but that is not enough. We need to ensure that the Liberals won’t get majority seats and fight for potential leading.</p>
+<p>Based on the above methodology and basic guidelines that need to be paid attention to, I designed the following questionnaire:</p>
+</div>
+<div id="fundamental-question" class="section level3">
+<h3>Fundamental Question</h3>
+<ol class="example" style="list-style-type: decimal">
+<li><p>How did you know about this survey?(Written by Questionnaire Collector)</p></li>
+<li><p>Are you eligible to vote?(choose Y or N)</p></li>
+<li><p>Which province are you located?(Use province code and option not to say)</p></li>
+<li><p>What is your gender?(Open question)</p></li>
+<li><p>How old are you?(Open question)</p></li>
+</ol>
+</div>
+<div id="trap-questionvalidity-checking" class="section level3">
+<h3>Trap question(Validity Checking)</h3>
+<ol start="6" class="example" style="list-style-type: decimal">
+<li><p>In this question, please choose A(Give choices of A and B)</p></li>
+<li><p>In this question, please choose F(Give choices of T and F)</p></li>
+</ol>
+</div>
+<div id="current-hotspot-affairs" class="section level3">
+<h3>Current Hotspot Affairs</h3>
+<ol start="8" class="example" style="list-style-type: decimal">
+<li><p>Do you think it is necessary to further strengthen or maintain the control of public areas such as bars?(Give choices of Yes and No)</p></li>
+<li><p>Do you think it is necessary to further postpone the opening of school?(Give choices of Yes and No)</p></li>
+<li><p>Do you think it is necessary to increase the minimum monthly income limit in CRB?(Give choices of Yes and No)</p></li>
+<li><p>Score from 1 to 10, how do you think the government should balance the promotion of vaccine trials and safety tests (the larger the value, the more important the safety test is)</p></li>
+<li><p>On a scale from 1 to 10, how do you think the government should make trade-offs between promoting the resumption of work and production and restricting production to ensure safety (the bigger the representative, the more hopeful it is to resume working)</p></li>
+</ol>
+</div>
+<div id="political-orientation-issues" class="section level3">
+<h3>Political orientation issues</h3>
+<ol start="13" class="example" style="list-style-type: decimal">
+<li><p>At present, which party would you vote?(Give choices and option not to say)</p></li>
+<li><p>Which party you think will win the election?(Give choices)</p></li>
+<li><p>Which party you think will get majority seats?(Give choices)</p></li>
+</ol>
+</div>
+</div>
+<div id="simulating" class="section level2">
+<h2>Simulating</h2>
+<p>In this part, I generated 10,000 questionnaires after screening, which means that there are no vacancies in the sample data that answered the trap questions correctly. In issues that are not related to political bias, the data generated is as even as possible.</p>
+<pre class="r"><code>n=1e4
+set.seed(1)
+dat &lt;- data.frame(
+  platform=rep(c(&#39;Park&#39;,&#39;Metro&#39;,&#39;Busstop&#39;,&#39;Playground&#39;,&#39;Twitter&#39;,&#39;Facebook&#39;,&#39;Reddit&#39;,&#39;Quora&#39;),125),
+  eligible=rep(&#39;Y&#39;,n),
+  province=c(rep(c(&#39;ON&#39;,&#39;QC&#39;,&#39;PE&#39;,&#39;BC&#39;,&#39;NB&#39;,&#39;NS&#39;,&#39;MB&#39;,&#39;NL&#39;,&#39;SK&#39;,&#39;AB&#39;,&#39;YT&#39;,&#39;NT&#39;,&#39;NU&#39;),769),rep(&#39;prefer_not_say&#39;,3)),
+  gender=rep(c(&#39;M&#39;,&#39;F&#39;),5000),
+  age=sample(20:60,10000,replace = T),
+  trapa=rep(&#39;A&#39;,1e4),
+  trapf=rep(&#39;F&#39;,1e4),
+  pub_ctrl=sample(c(&#39;Y&#39;,&#39;N&#39;),10000,replace = T,prob = c(0.3,0.7)),
+  sch_open=sample(c(&#39;Y&#39;,&#39;N&#39;),10000,replace = T,prob = c(0.35,0.65)),
+  min_inc=sample(c(&#39;Y&#39;,&#39;N&#39;),10000,replace = T,prob = c(0.8,0.2)),
+  balance1 = as.integer(rnorm(10000,5.5,1)),
+  balance2 = as.integer(rnorm(10000,5.5,1.2)),
+  vote = sample(c(&#39;LIB&#39;,&#39;CON&#39;,&#39;NDP&#39;,&#39;BQ&#39;,&#39;GRN&#39;,&#39;OTH&#39;),10000,replace = T,prob = c(0.364,0.309,0.173,0.067,0.061,0.026)),
+  win = sample(c(&#39;LIB&#39;,&#39;CON&#39;,&#39;NDP&#39;),10000,replace = T,prob = c(0.6,0.3,0.1)),
+  majority = sample(c(&#39;LIB&#39;,&#39;CON&#39;),10000,replace = T,prob = c(0.85,0.15)),
+  stringsAsFactors = T
+)</code></pre>
+<p>and we can get our simulated data frame in an ideal state.</p>
+</div>
+<div id="results" class="section level2">
+<h2>Results</h2>
+<p>Although the result comes from simulating, we should know what matters is the method of analysis, not the result of a particular survey.</p>
+<div id="fundamental-summary" class="section level3">
+<h3>Fundamental Summary</h3>
+<p>First we can view the basic information of the data set generated by the simulation:</p>
+<pre class="r"><code># show structure
+str(dat)</code></pre>
+<pre><code>## &#39;data.frame&#39;:    10000 obs. of  15 variables:
+##  $ platform: Factor w/ 8 levels &quot;Busstop&quot;,&quot;Facebook&quot;,..: 4 3 1 5 8 2 7 6 4 3 ...
+##  $ eligible: Factor w/ 1 level &quot;Y&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ province: Factor w/ 14 levels &quot;AB&quot;,&quot;BC&quot;,&quot;MB&quot;,..: 9 12 10 2 4 6 3 5 13 1 ...
+##  $ gender  : Factor w/ 2 levels &quot;F&quot;,&quot;M&quot;: 2 1 2 1 2 1 2 1 2 1 ...
+##  $ age     : int  23 58 20 53 42 33 37 52 40 40 ...
+##  $ trapa   : Factor w/ 1 level &quot;A&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ trapf   : Factor w/ 1 level &quot;F&quot;: 1 1 1 1 1 1 1 1 1 1 ...
+##  $ pub_ctrl: Factor w/ 2 levels &quot;N&quot;,&quot;Y&quot;: 1 1 2 1 1 2 1 1 2 1 ...
+##  $ sch_open: Factor w/ 2 levels &quot;N&quot;,&quot;Y&quot;: 1 1 2 1 1 1 2 1 2 1 ...
+##  $ min_inc : Factor w/ 2 levels &quot;N&quot;,&quot;Y&quot;: 2 2 2 2 2 2 2 1 2 2 ...
+##  $ balance1: int  6 4 3 6 5 6 6 5 4 5 ...
+##  $ balance2: int  6 4 5 6 4 5 4 5 5 5 ...
+##  $ vote    : Factor w/ 6 levels &quot;BQ&quot;,&quot;CON&quot;,&quot;GRN&quot;,..: 4 1 4 2 3 4 1 4 4 4 ...
+##  $ win     : Factor w/ 3 levels &quot;CON&quot;,&quot;LIB&quot;,&quot;NDP&quot;: 2 3 1 2 2 2 2 1 2 2 ...
+##  $ majority: Factor w/ 2 levels &quot;CON&quot;,&quot;LIB&quot;: 2 2 2 2 1 2 2 2 2 2 ...</code></pre>
+<pre class="r"><code># brief summary
+summary(dat)</code></pre>
+<pre><code>##        platform    eligible     province    gender        age       trapa    
+##  Busstop   :1250   Y:10000   AB     : 769   F:5000   Min.   :20.0   A:10000  
+##  Facebook  :1250             BC     : 769   M:5000   1st Qu.:30.0            
+##  Metro     :1250             MB     : 769            Median :40.0            
+##  Park      :1250             NB     : 769            Mean   :39.9            
+##  Playground:1250             NL     : 769            3rd Qu.:50.0            
+##  Quora     :1250             NS     : 769            Max.   :60.0            
+##  (Other)   :2500             (Other):5386                                    
+##  trapf     pub_ctrl sch_open min_inc     balance1        balance2    
+##  F:10000   N:7041   N:6471   N:1934   Min.   :1.000   Min.   :0.000  
+##            Y:2959   Y:3529   Y:8066   1st Qu.:4.000   1st Qu.:4.000  
+##                                       Median :5.000   Median :5.000  
+##                                       Mean   :5.008   Mean   :4.992  
+##                                       3rd Qu.:6.000   3rd Qu.:6.000  
+##                                       Max.   :9.000   Max.   :9.000  
+##                                                                      
+##   vote       win       majority  
+##  BQ : 699   CON:2999   CON:1423  
+##  CON:3059   LIB:6044   LIB:8577  
+##  GRN: 582   NDP: 957             
+##  LIB:3643                        
+##  NDP:1757                        
+##  OTH: 260                        
+## </code></pre>
+</div>
+<div id="exploratory-analysis" class="section level3">
+<h3>Exploratory Analysis</h3>
+<p>Using the fundamental information of survey results, it’s not intuitive for our clients. So we hope to reflect the exact relationship through quantitative expression, in this section, we are trying to find out if the two numeric <code>balance</code> answers can influence each other.</p>
+<pre class="r"><code># correlation statistics
+cor(dat$balance1, dat$balance2)</code></pre>
+<pre><code>## [1] 0.001885394</code></pre>
+<pre class="r"><code># linear regression
+linear.model1 &lt;- lm(balance1 ~ balance2,
+                    data = dat)
+summary(linear.model1)</code></pre>
+<pre><code>## 
+## Call:
+## lm(formula = balance1 ~ balance2, data = dat)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -4.0098 -1.0066 -0.0082  0.9902  3.9934 
+## 
+## Coefficients:
+##             Estimate Std. Error t value Pr(&gt;|t|)    
+## (Intercept) 5.000329   0.043041 116.176   &lt;2e-16 ***
+## balance2    0.001577   0.008363   0.189     0.85    
+## ---
+## Signif. codes:  0 &#39;***&#39; 0.001 &#39;**&#39; 0.01 &#39;*&#39; 0.05 &#39;.&#39; 0.1 &#39; &#39; 1
+## 
+## Residual standard error: 1.045 on 9998 degrees of freedom
+## Multiple R-squared:  3.555e-06,  Adjusted R-squared:  -9.646e-05 
+## F-statistic: 0.03554 on 1 and 9998 DF,  p-value: 0.8505</code></pre>
+<p>From the statistics and also the summary, it’s significant that there’s no linear correlation between this two variables. This result comes from our simulation, so of course nothing will be discovered. But in some circumstances, some kind of linear dependence exists between two numeric variables, and our clients can use such model to develop or modify policies.</p>
+<p>Moreover, there are more <code>factor</code> variables we need to analyze. And what we do next is to test whether the means of the two types of samples are the same.</p>
+<p>To be precise, we want to do a hypothesis test, that is, whether people of different genders will make the same level in the first balancing decision (here we are based on the estimation method of statistics in sampling theory, and we believe that the mean can reflect unbiasedly Average) decision-making.</p>
+<p>So our original hypothesis is: Different genders have the same level of response to the first type of balanced decision-making. In contrast, the alternative hypothesis is that different genders have different levels of response to the first type of balanced decision-making.</p>
+<pre class="r"><code>a &lt;- dat$balance1[which(dat$gender==&#39;M&#39;)]
+b &lt;- dat$balance1[which(dat$gender==&#39;F&#39;)]
+
+t.test(a,b)</code></pre>
+<pre><code>## 
+##  Welch Two Sample t-test
+## 
+## data:  a and b
+## t = -0.66977, df = 9995.7, p-value = 0.503
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  -0.05497341  0.02697341
+## sample estimates:
+## mean of x mean of y 
+##    5.0012    5.0152</code></pre>
+<p>After testing, we found that the two groups of people did have the same decision-making level in the first balanced decision. That is, after testing, according to the statistics and p-value, the mean values of the two numerical variables are the same, so here we accept the null hypothesis and consider that they are different The genders have the same level of response to the first type of balanced decision-making.</p>
+<p>Indeed, this result is produced because the result data set is generated by our use of the program, rather than a response to the real situation. But at the same time we need to know that different groups of people, especially groups with large differences in group characteristics, usually have different levels of group responses when facing problems, and political parties (or other customers) need to use this group difference to obtain specific groups. Stable support, and to a greater extent strive for the favor of opposing groups to prevent them from falling to competitors.</p>
+</div>
+<div id="visual-analysis-method" class="section level3">
+<h3>Visual analysis method</h3>
+<p>The intuitive feeling comes from the persuasive chart. Below we tried different methods to try to characterize the result data:</p>
+<div id="preparing" class="section level4">
+<h4>Preparing</h4>
+<pre class="r"><code># load packages
+library(ggplot2)
+library(plyr)
+library(olsrr)</code></pre>
+<pre><code>## 
+## 载入程辑包：&#39;olsrr&#39;</code></pre>
+<pre><code>## The following object is masked from &#39;package:datasets&#39;:
+## 
+##     rivers</code></pre>
+</div>
+<div id="bar-plot" class="section level4">
+<h4>Bar plot</h4>
+<p>When we look at the distribution of platform, we can use <code>table</code> to generate result like this:</p>
+<pre class="r"><code>table(dat$platform)</code></pre>
+<pre><code>## 
+##    Busstop   Facebook      Metro       Park Playground      Quora     Reddit 
+##       1250       1250       1250       1250       1250       1250       1250 
+##    Twitter 
+##       1250</code></pre>
+<p>And we are going to visualize it like Figure 1 below:</p>
+<pre class="r"><code>num &lt;- as.numeric(table(dat$platform))
+names &lt;- names(table(dat$platform))
+df &lt;- data.frame(num=num,names=names)
+
+ggplot(df, aes(x=names, y=num, fill=names)) +
+  geom_bar(stat=&quot;identity&quot;)+theme_minimal() +
+  ggtitle(&#39;Figure 1: Sample Distribution of Platform&#39;)</code></pre>
+<p><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-7-1.png" width="672" style="display: block; margin: auto;" /></p>
+</div>
+<div id="density-plot" class="section level4">
+<h4>Density Plot</h4>
+<p>Studying the density distribution of two types of numerical samples can compare the differences between the two types of samples at the same level, and through the method of combination graphs, this comparison is more intuitive:</p>
+<pre class="r"><code># calculate mean
+mu &lt;- ddply(dat, &quot;gender&quot;, summarise, grp.mean=mean(balance1))
+# density plot
+ggplot(dat, aes(x=balance1, color=gender)) +
+  geom_density()+
+  geom_vline(data=mu, aes(xintercept=grp.mean, color=gender),
+             linetype=&quot;dashed&quot;)+
+  ggtitle(&#39;Figure 2: Density Plot of the first balance vote between genders&#39;)</code></pre>
+<p><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-8-1.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Since we used simulated data for verification, we can find in Figure 2 that the two genders are the same on the image. But by observing the fineness of the image, it can be found that the density map is indeed an excellent visualization method.</p>
+</div>
+<div id="boxplot" class="section level4">
+<h4>Boxplot</h4>
+<p>In addition to the density map that can reflect the overall nature, we can also use box plots that can reflect the overall value distribution to depict the performance of different variables or different individuals of the same variable:</p>
+<div id="different-variables" class="section level5">
+<h5>Different Variables</h5>
+<p>If we want to know the difference between the results of two balanced votes, we can use:</p>
+<pre class="r"><code>df &lt;- data.frame(votes = c(dat$balance1,dat$balance2),
+                 tags = c(rep(&#39;V1&#39;,5e3),rep(&#39;V2&#39;,5e3)))
+
+ggplot(df, aes(x=tags, y=votes, fill=tags)) +
+  geom_boxplot() +
+  ggtitle(&#39;Figure 3: Boxplot Comparison of Two Variables&#39;)</code></pre>
+<p><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-9-1.png" width="672" style="display: block; margin: auto;" />
+The result Figure 3 also reflects the similarity of the two simulation variables, which verifies the effectiveness of the method.</p>
+</div>
+<div id="one-variable-in-different-groups" class="section level5">
+<h5>One Variable in Different Groups</h5>
+<p>If we want to know the difference between the results of two balanced groups, we can use:</p>
+<pre class="r"><code>ggplot(dat, aes(x=win, y=balance1, fill=win)) +
+  geom_boxplot() +
+  ggtitle(&#39;Figure 4: Boxplot Comparison of Two Groups in Balance 1&#39;)</code></pre>
+<p><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-10-1.png" width="672" style="display: block; margin: auto;" />
+Same as before, the result Figure 4 also reflects the similarity of the simulation data of different groups.</p>
+</div>
+</div>
+<div id="regression-plot" class="section level4">
+<h4>Regression Plot</h4>
+<p>Different from the previous drawing, here we use the regression model established before for diagnosis, and use the diagnosis method in the <code>olsrr</code> package to draw all the diagnostic images together.</p>
+<pre class="r"><code>ols_plot_diagnostics(linear.model1)</code></pre>
+<p><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-11-1.png" width="672" style="display: block; margin: auto;" /><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-11-2.png" width="672" style="display: block; margin: auto;" /><img src="/post/2020-10-02-survey-of-overall-election-employed-by-the-conservative-party_files/figure-html/unnamed-chunk-11-3.png" width="672" style="display: block; margin: auto;" /></p>
+<p>Looking at the figures, you can find that such a regression image can be more useful in real application scenarios.</p>
+</div>
+</div>
+</div>
+<div id="discussion" class="section level2">
+<h2>Discussion</h2>
+<ol style="list-style-type: decimal">
+<li>In this sampling survey and simulation process, are there still errors or biases?</li>
+</ol>
+<p>In such a sample survey, any form of prejudice and error are unavoidable. For example: This simulation took an equal amount of samples on each social platform, but in fact, the number of active people on each platform is different and should be distributed in a certain proportion. The same problem also appears in the sampling of public places. Of course, different public places have different numbers of active people.</p>
+<p>The information collected does not fully reflect the real situation. For example, due to factors such as incorrect filling or deliberate wrong filling, not all subjects who claim to be eligible to vote have the right to vote. This will also make it difficult to distinguish which samples are indeed valid. We can only obtain more information. Samples and unbiased estimates based on sampling theory to obtain as accurate information as possible.</p>
+<ol start="2" style="list-style-type: decimal">
+<li>In this sampling survey and simulation process, how can we help customers(the Conservative) through the results?</li>
+</ol>
+<p>Through the analysis of the results, we can indeed provide customers with a lot of substantive and actionable suggestions. For example, the quantitative methods and hypothesis testing methods used in the “Results” section can determine the source of stable support for customers and the groups that need to be sought. By changing the means of propaganda or the allocation of resources invested in elections, the swing votes of a particular electoral district can be significantly increased. These are specific practical suggestions</p>
+<p>In addition, the results of the survey can help customers understand the current situation and obtain more targeted results in further investigations. Even if you don’t dig deeper and use the visualization methods of charts, you can intuitively show the results of the election to your partners, win more support for yourself, and create stronger propaganda capital.</p>
+<ol start="3" style="list-style-type: decimal">
+<li>In this sampling survey and simulation process, what kind of result can be considered good?</li>
+</ol>
+<p>In the whole survey results, the authenticity and validity of the results are two very important parts. According to sampling theory, a survey result is considered a good survey only when it is true and credible and contains more information.</p>
+<p>First of all, ask yourself a question. Why is it not always a good thing to support the majority of the party stations where customers are in the survey results? How do you prove that your results are credible when your survey results are very different from those done by others?</p>
+<p>If you find friends who are close to your own ideas and conduct provocative investigations in a small area, the results will of course be very biased. A good survey should not mislead or influence the concept of the surveyed, let alone select a specific group for the survey, which will run counter to the purpose of the survey. The survey is a non-interference one-to-many exchange. It is a friendly exchange of information under the protection of respect and protection of the privacy of the other party. Only when the surveyed person is not selected outside the scope, the questionnaire should not be designed with inflammatory questions. Only when we don’t restrict the investigation scene can we get closer to the original investigation goal.</p>
+</div>
+<div id="reference" class="section level2">
+<h2>Reference</h2>
+<ul>
+<li><a href="https://newsinteractives.cbc.ca/elections/poll-tracker/canada/" class="uri">https://newsinteractives.cbc.ca/elections/poll-tracker/canada/</a></li>
+<li>Wu &amp; Thompson: Sampling Theory and Practice</li>
+<li>H. Wickham. ggplot2: Elegant Graphics for Data Analysis.
+Springer-Verlag New York, 2016.</li>
+<li>Hadley Wickham (2011). The Split-Apply-Combine Strategy for Data
+Analysis. Journal of Statistical Software, 40(1), 1-29. URL
+<a href="http://www.jstatsoft.org/v40/i01/" class="uri">http://www.jstatsoft.org/v40/i01/</a>.</li>
+<li>Aravind Hebbali (2020). olsrr: Tools for Building OLS Regression
+Models. R package version 0.5.3.
+<a href="https://CRAN.R-project.org/package=olsrr" class="uri">https://CRAN.R-project.org/package=olsrr</a></li>
+</ul>
+</div>
+<div id="appendices" class="section level2">
+<h2>Appendices</h2>
+<p>Survey Link: <a href="https://docs.google.com/forms/d/e/1FAIpQLSfySY4VjWC50LSK8f1rAKDc723D3JU2Tkmr_fKuKL7Shlm0Rg/viewform?usp=sf_link" class="uri">https://docs.google.com/forms/d/e/1FAIpQLSfySY4VjWC50LSK8f1rAKDc723D3JU2Tkmr_fKuKL7Shlm0Rg/viewform?usp=sf_link</a></p>
+<div class="figure">
+<img src="/post/screenshot.PNG" alt="" />
+<p class="caption">Screenshot</p>
+</div>
+</div>
+
+    </div>
+  </article>
+
+  
+
+
+</main>
+
+      <footer class="footer">
+        <ul class="footer-links">
+          <li>
+            <a href="/index.xml" type="application/rss+xml" target="_blank">RSS feed</a>
+          </li>
+          <li>
+            <a href="https://gohugo.io/" class="footer-links-kudos">Made with <img src="/images/hugo-logo.png" alt="Img link to Hugo website" width="22" height="22"></a>
+          </li>
+        </ul>
+      </footer>
+
+    </div>
+    
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/highlight.min.js"></script>
+
+
+
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/r.min.js"></script>
+<script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.12.0/languages/yaml.min.js"></script>
+<script>hljs.configure({languages: []}); hljs.initHighlightingOnLoad();</script>
+
+
+
+    
+<script src="/js/math-code.js"></script>
+<script async src="//cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/MathJax.js?config=TeX-MML-AM_CHTML"></script>
+
+
+    
+  </body>
+</html>
+
