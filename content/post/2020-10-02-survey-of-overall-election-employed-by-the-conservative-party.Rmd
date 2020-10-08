@@ -1,5 +1,5 @@
 ---
-title: Survey of Overall Election Employed by the Conservative Party
+title: "Polling Survey: The Key of Winning Election"
 author: Zhendong Zhang
 date: '2020-10-02'
 ---
